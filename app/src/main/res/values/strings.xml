@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Consumo de Api</string>
+
+
+    <string name="cargando_mensaje">Cargando datos. Por favor, espere...</string>
+
+    <string name="photo_thumbnail">Miniatura de la foto</string>
+
+    <string name="error_general">Error: No se pudieron cargar los datos.</string>
+
+</resources>
