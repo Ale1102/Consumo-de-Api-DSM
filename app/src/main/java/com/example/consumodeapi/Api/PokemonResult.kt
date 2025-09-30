@@ -1,8 +1,6 @@
 package com.example.consumodeapi.Api
-
-// PokemonResult.kt
 data class PokemonResult(
-    val name: String, // Usado para el título/nombre
+    val name: String, // Usado para el título
     val url: String // Usado para obtener la ID del Pokémon
 ) {
     // Función de ayuda para extraer la ID numérica del Pokémon de la URL
@@ -14,7 +12,6 @@ data class PokemonResult(
     }
 
     // Función de ayuda para obtener la URL de la imagen del Pokémon
-    // La API de imágenes es externa, pero sigue un patrón simple:
     fun getImageUrl(): String {
         val id = getId()
         // Usamos el servicio oficial de GitHub para las imágenes

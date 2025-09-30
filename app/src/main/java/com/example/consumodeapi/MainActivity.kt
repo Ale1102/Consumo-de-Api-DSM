@@ -30,24 +30,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // 1. Inicialización de vistas
+        // Inicialización de vistas
         recyclerView = findViewById(R.id.recyclerView)
         progressBar = findViewById(R.id.progressBar)
         textViewStatus = findViewById(R.id.textViewStatus)
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
 
-        // 2. Configuración del RecyclerView
+        // Configuración del RecyclerView
         // Cambiado el nombre de la variable de 'photoAdapter' a 'pokemonAdapter' para claridad
         pokemonAdapter = PokemonAdapter(emptyList())
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = pokemonAdapter
 
-        // 3. Configuración del deslizar para refrescar
+        // Configuración del deslizar para refrescar
         swipeRefreshLayout.setOnRefreshListener {
             fetchPokemon() // Llamar a la función de carga de datos
         }
 
-        // 4. Carga inicial
+        // Carga inicial
         fetchPokemon()
     }
 
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             showLoadingState()
         }
 
-        // Usamos Coroutines para la petición asíncrona (IO thread)
+        // Usamos Coroutines para la petición asíncrona
         lifecycleScope.launch {
             try {
                 val response = withContext(Dispatchers.IO) {
@@ -66,7 +66,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 if (response.isSuccessful && response.body() != null) {
-                    // ¡CORRECCIÓN CLAVE AQUÍ!
                     // Extraemos la lista de Pokémon del campo 'results' de la respuesta.
                     val pokemonResults: List<PokemonResult> = response.body()!!.results
 
@@ -74,21 +73,21 @@ class MainActivity : AppCompatActivity() {
                     showSuccessState(pokemonResults)
 
                 } else {
-                    // Manejo de códigos de error HTTP (4xx, 5xx)
+                    // Manejo de códigos de error HTTP
                     showErrorState("Error en el servidor: ${response.code()}")
                 }
             } catch (e: Exception) {
-                // Manejo de errores de conexión (ej. No hay internet, timeout)
+                // Manejo de errores de conexión
                 showErrorState("No hay conexión a Internet o error de red.")
                 e.printStackTrace()
             } finally {
-                // Oculta el indicador de refresco siempre, al final
+                // Oculta el indicador de refresco siempre al final
                 swipeRefreshLayout.isRefreshing = false
             }
         }
     }
 
-    // --- Manejo de Estados de la UI ---
+    //Manejo de Estados de la UI
 
     private fun showLoadingState() {
         recyclerView.visibility = View.GONE

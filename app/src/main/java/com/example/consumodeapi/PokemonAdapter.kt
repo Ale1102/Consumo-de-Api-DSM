@@ -1,6 +1,4 @@
 package com.example.consumodeapi
-
-// PhotoAdapter.kt
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.consumodeapi.Api.PokemonListResponse
 import com.example.consumodeapi.Api.PokemonResult
 
 
@@ -26,15 +25,15 @@ class PokemonAdapter(private var pokemonList: List<PokemonResult>) :
         val textViewId: TextView = itemView.findViewById(R.id.textViewId)
 
         fun bind(pokemon: PokemonResult) {
-            // Título: Nombre del Pokémon (ej. "bulbasaur")
+            // Nombre del Pokémon
             textViewTitle.text = pokemon.name.replaceFirstChar {
                 if (it.isLowerCase()) it.titlecase() else it.toString()
             }
 
-            // ID: Número de Pokémon (ej. ID: 1)
+            //Número de Pokémon
             textViewId.text = "ID: ${pokemon.getId()}"
 
-            // Carga de Imagen: Usamos la URL generada a partir de la ID
+            // Carga de Imagen, usamos la URL generada a partir de la ID
             Glide.with(itemView.context)
                 .load(pokemon.getImageUrl())
                 .placeholder(R.drawable.ic_placeholder)
@@ -43,10 +42,10 @@ class PokemonAdapter(private var pokemonList: List<PokemonResult>) :
         }
     }
 
-    // Crea nuevos ViewHolders (cuando no hay suficientes para reciclar)
+    // Crea nuevos ViewHolders cuando no hay suficientes para reciclar
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item_pokemon, parent, false)
+            .inflate(R.layout.list_item_photo, parent, false)
         return PokemonViewHolder(view)
     }
 
