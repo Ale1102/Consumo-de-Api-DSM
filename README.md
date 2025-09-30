@@ -4,6 +4,7 @@
 
 Este proyecto forma parte de la asignatura **Desarrollo de Software para Móviles (DSM441 G01T)**.  
 El objetivo es desarrollar una aplicación móvil sencilla que consuma una API REST.
+El proyecto esta hecho en la version Android Studio Narwhal | 2025.1.1
 
 ---
 
