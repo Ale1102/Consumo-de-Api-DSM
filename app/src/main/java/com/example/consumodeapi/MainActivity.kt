@@ -1,6 +1,4 @@
 package com.example.consumodeapi
-
-// Importaciones necesarias. Asegúrate de que estas clases existan:
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.consumodeapi.Api.RetrofitClient
-import com.example.consumodeapi.Api.PokemonResult // ¡Nueva importación necesaria!
+import com.example.consumodeapi.Api.PokemonResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -96,7 +94,6 @@ class MainActivity : AppCompatActivity() {
         textViewStatus.text = "Cargando datos..." // Estado de carga
     }
 
-    // ¡CORRECCIÓN CLAVE AQUÍ!
     // La función debe aceptar una lista de PokemonResult, no PokemonListResponse.
     private fun showSuccessState(pokemonList: List<PokemonResult>) {
         // Debes llamar al método updateData en la instancia de tu adaptador.
