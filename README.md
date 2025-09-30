@@ -18,6 +18,6 @@ El objetivo es desarrollar una aplicación móvil sencilla que consuma una API R
 
 ## 📂 Documentación
 
-<a href="Consumo-de-Api-DSM/Investigación Aplicada 2 DSM.pdf" target="_blank">📄 Investigación 2</a>  
+<a href="Investigación Aplicada 2 DSM.pdf" target="_blank">📄 Investigación 2</a>  
 
 ---
